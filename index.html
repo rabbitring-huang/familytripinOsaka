@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>2026 OSAKA 吃貨家族旅遊趣</title>
+  <title>2026 OSAKA吃貨家族旅遊趣</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -77,7 +77,7 @@
   <header class="sticky top-0 z-30 bg-[#FAF6F0]/90 backdrop-blur-md border-b border-brand-border/60 px-4 py-3 flex items-center justify-between">
     <div class="flex items-center space-x-2">
       <span class="text-xl">🍁</span>
-      <h1 class="font-serif font-bold text-lg tracking-wide text-brand-text">2026 OSAKA 吃貨家族旅遊趣</h1>
+      <h1 class="font-serif font-bold text-lg tracking-wide text-brand-text">2026 OSAKA吃貨家族旅遊趣</h1>
     </div>
     <span class="text-xs px-2.5 py-1 rounded-full bg-brand-badge text-brand-primary font-medium border border-brand-border/40">
       5天4夜 10/16-10/20
@@ -93,7 +93,7 @@
       <div class="bg-gradient-to-br from-[#E67E51] to-[#B84226] text-white p-5 rounded-2xl shadow-sm relative overflow-hidden">
         <div class="absolute -right-4 -bottom-4 text-white/10 text-8xl font-serif select-none pointer-events-none">關西</div>
         <div class="text-xs uppercase tracking-widest text-orange-100 font-semibold mb-1">Family Trip 2026</div>
-        <h2 class="text-2xl font-serif font-bold mb-1">2026 OSAKA 吃貨家族旅遊趣</h2>
+        <h2 class="text-2xl font-serif font-bold mb-1">吃貨家族旅遊趣</h2>
         <p class="text-xs text-orange-100/90 font-light">2026/10/16 (五) – 10/20 (二) ｜ 5 天 4 夜</p>
       </div>
 
@@ -111,6 +111,64 @@
         </div>
         <div id="dynamic-status-box" class="text-sm font-medium text-brand-text leading-relaxed bg-brand-bg/70 p-3 rounded-lg border border-brand-border/40">
           <!-- Dynamically inserted content via JavaScript -->
+        </div>
+      </div>
+
+      <!-- 當天與隔天景點天氣預報區塊 -->
+      <div class="bg-brand-card border border-brand-border rounded-xl p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-3 border-b border-brand-border/60 pb-2">
+          <div class="flex items-center gap-1.5">
+            <span class="text-base">🌤️</span>
+            <h3 class="font-bold text-brand-text text-sm">關西天氣預報</h3>
+          </div>
+          <span id="weather-update-badge" class="text-[10px] bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            即時氣象連線 (tenki.jp)
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <!-- 當天當地天氣 -->
+          <div class="bg-brand-bg/80 border border-brand-border/60 rounded-lg p-2.5 space-y-1">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="font-bold text-brand-primary flex items-center gap-1">📍 當天當地</span>
+              <span id="weather-today-date" class="text-[10px] text-brand-muted">10/16 (五)</span>
+            </div>
+            <div class="flex items-baseline justify-between pt-1">
+              <div>
+                <div id="weather-today-loc" class="font-bold text-xs text-brand-text">大阪市區</div>
+                <div id="weather-today-status" class="text-[11px] text-brand-muted">晴時多雲</div>
+              </div>
+              <div class="text-right">
+                <div id="weather-today-temp" class="text-base font-bold text-brand-secondary">22°C</div>
+                <div id="weather-today-range" class="text-[9px] text-brand-muted">16° ~ 23°C</div>
+              </div>
+            </div>
+            <div id="weather-today-tip" class="text-[10px] text-brand-muted pt-1.5 border-t border-brand-border/40 mt-1 leading-tight">
+              💡 穿搭：早晚偏涼，建議洋蔥式薄外套
+            </div>
+          </div>
+
+          <!-- 隔天景點天氣 -->
+          <div class="bg-brand-bg/80 border border-brand-border/60 rounded-lg p-2.5 space-y-1">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="font-bold text-brand-primary flex items-center gap-1">🚀 隔天景點</span>
+              <span id="weather-next-date" class="text-[10px] text-brand-muted">10/17 (六)</span>
+            </div>
+            <div class="flex items-baseline justify-between pt-1">
+              <div>
+                <div id="weather-next-loc" class="font-bold text-xs text-brand-text">美山 / 天橋立</div>
+                <div id="weather-next-status" class="text-[11px] text-brand-muted">晴朗微涼</div>
+              </div>
+              <div class="text-right">
+                <div id="weather-next-temp" class="text-base font-bold text-brand-secondary">18°C</div>
+                <div id="weather-next-range" class="text-[9px] text-brand-muted">12° ~ 19°C</div>
+              </div>
+            </div>
+            <div id="weather-next-tip" class="text-[10px] text-brand-muted pt-1.5 border-t border-brand-border/40 mt-1 leading-tight">
+              💡 穿搭：海邊山區風大，請帶保暖外套
+            </div>
+          </div>
         </div>
       </div>
 
@@ -244,9 +302,9 @@
 
         <!-- Accommodation Photos -->
         <div class="grid grid-cols-3 gap-2 mt-3">
-          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&auto=format&fit=crop" alt="KOGUMA外觀" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
-          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&auto=format&fit=crop" alt="風棟客廳" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
-          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&auto=format&fit=crop" alt="嵐棟客廳" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
+          <img src="https://github.com/rabbitring-huang/familytripinOsaka/blob/d1c7e40f645332c16971e93a181500fcaceae6f4/KOKUMA.png" alt="KOGUMA外觀" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
+          <img src="https://github.com/rabbitring-huang/familytripinOsaka/blob/d1c7e40f645332c16971e93a181500fcaceae6f4/KOKUMA-KASE.png" alt="風棟客廳" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
+          <img src="https://github.com/rabbitring-huang/familytripinOsaka/blob/d1c7e40f645332c16971e93a181500fcaceae6f4/KOKUMA-Arashi.png" alt="嵐棟客廳" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
         </div>
       </div>
 
@@ -295,7 +353,7 @@
               <div class="border border-brand-border rounded-b-lg divide-y divide-brand-border text-xs">
                 <div class="p-2.5 flex justify-between items-center bg-white">
                   <span class="font-semibold text-brand-text">2F 三人房</span>
-                  <span class="text-brand-muted">鄭家姊妹花 ＋ 冠儀</span>
+                  <span class="text-brand-muted">鄭家姊妹花🌺 ＋ 冠儀</span>
                 </div>
                 <div class="p-2.5 flex justify-between items-center bg-white">
                   <span class="font-semibold text-brand-text">2F 雙床房</span>
@@ -381,7 +439,7 @@
                 <div class="border-b border-brand-border/60 pb-2">
                   <div class="flex justify-between items-center">
                     <a href="https://www.google.com/maps/search/?api=1&query=ファミリーマート+西成千本中店" target="_blank" class="font-bold text-brand-primary underline">
-                      FamilyMart 西成千本中店 ↗
+                      FamilyMart 全家 西成千本中店 ↗
                     </a>
                     <span class="text-[10px] bg-yellow-100 text-yellow-800 font-medium px-1.5 py-0.5 rounded">步行 4 分 (290m)</span>
                   </div>
@@ -391,7 +449,7 @@
                 <div class="pb-1">
                   <div class="flex justify-between items-center">
                     <a href="https://www.google.com/maps/search/?api=1&query=セブン-イレブン+大阪橘1丁目店" target="_blank" class="font-bold text-brand-primary underline">
-                      7-Eleven 大阪橘1丁目店 ↗
+                      7-11 大阪橘1丁目店 ↗
                     </a>
                     <span class="text-[10px] bg-yellow-100 text-yellow-800 font-medium px-1.5 py-0.5 rounded">步行 5 分 (350m)</span>
                   </div>
@@ -419,7 +477,7 @@
                 <div class="border-b border-brand-border/60 pb-2">
                   <div class="flex justify-between items-center">
                     <a href="https://www.google.com/maps/search/?api=1&query=APURO超市+天下茶屋店" target="_blank" class="font-bold text-brand-primary underline">
-                      APURO 超市 天下茶屋店 ↗
+                      食品館 APURO（アプロ) 天下茶屋店 ↗
                     </a>
                     <span class="text-[10px] bg-orange-100 text-brand-secondary font-medium px-1.5 py-0.5 rounded">步行 5 分 (400m)</span>
                   </div>
@@ -429,7 +487,7 @@
                 <div class="border-b border-brand-border/60 pb-2">
                   <div class="flex justify-between items-center">
                     <a href="https://www.google.com/maps/search/?api=1&query=Izumiya+日常卡納特超市+天下茶屋店" target="_blank" class="font-bold text-brand-primary underline">
-                      Izumiya 日常卡納特超市 天下茶屋店 ↗
+                      Izumiya (イズミヤ) 超市 天下茶屋店 ↗
                     </a>
                     <span class="text-[10px] bg-orange-100 text-brand-secondary font-medium px-1.5 py-0.5 rounded">步行 6 分 (500m)</span>
                   </div>
@@ -449,7 +507,7 @@
                 <div>
                   <div class="flex justify-between items-center">
                     <a href="https://www.google.com/maps/search/?api=1&query=Sundi+折扣超市+岸里店" target="_blank" class="font-bold text-brand-primary underline">
-                      Sundi 折扣超市 岸里店 ↗
+                      Sundi (サンディ) 折扣超市 岸里店 ↗
                     </a>
                     <span class="text-[10px] bg-orange-100 text-brand-secondary font-medium px-1.5 py-0.5 rounded">步行 9 分 (700m)</span>
                   </div>
@@ -528,7 +586,7 @@
         <p><strong class="text-brand-text">車型配置：</strong>豐田考斯特 (Toyota Coaster, 22人座級別)</p>
         <p><strong class="text-brand-text">用車時間：</strong>每日 10 小時 (服務時間 08:00 – 21:00)</p>
         <div class="p-2.5 bg-orange-50/80 rounded-lg border border-brand-border text-brand-secondary text-[11px]">
-          <strong>已付款明細：</strong>住宿費 NT$3,812/人 ＋ 包車費 NT$4,750/人 ＝ <strong>總計 NT$8,562/人</strong>（匯款請洽：高科車業28歲老闆娘）。
+          <strong>已付款明細：</strong>住宿費 NT$3,812/人 ＋ 包車費 NT$4,750/人 ＝ <strong>總計 NT$8,562/人</strong>（匯款請洽：高科車業28歲美麗老闆娘）。
         </div>
       </div>
 
@@ -637,9 +695,13 @@
       before: [
         "距離大阪吃貨模式啟動還有 {X} 天！",
         "再 {X} 天，就可以開始把日幣變成回憶。",
-        "再過 {X} 天，錢錢就變成喜歡的東西了喔！",
+        "再 {X} 天，錢錢就變成喜歡的東西了喔！",
         "該買的旅平險不便險、錢錢消失沒有保險該要看了喲！",
-        "行李還沒整理完？先別慌，大阪還在等你。"
+        "行李還沒整理完？先別慌，大阪還在等你。",
+        "打包不是把所有喜歡的東西都帶上，五天四夜不是五十天四十九夜，冷靜!",
+        "衣服忘一件還能買，護照忘了就只能揮手說再見！手機、錢包、護照：先確認，再出門。",
+        "免稅一時爽，行李超重想一想。",
+        "再 {X} 天，看到「日本限定」請先深呼吸，否則行李箱容量即將成為人生難題。"
       ],
       day1016: "今日正式出發！日本模式 ON 🇯🇵 護照行李魔法小卡帶齊，大阪我們來了！",
       day1017: "今日模式：丹後天橋立 ✕ 美山茅葺村！走入京都原鄉秘境 ⛩️",
@@ -677,7 +739,7 @@
             name: "臨空城 Outlet",
             jpName: "りんくうプレミアム・アウトレット",
             type: "shopping",
-            img: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/d1c7e40f645332c16971e93a181500fcaceae6f4/RingkuTown.png",
             intro: "關西機場旁海港型購物天堂，停留 2 小時採買國際品牌與美妝服飾。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=Rinku+Premium+Outlets",
             story: "位於海港旁的廣闊購物小鎮，匯集數百家日本與國際品牌。大家通常來這裡搶購運動品牌、日系服飾、精品配件與伴手禮，沿著海邊步道逛起來非常舒適愜意。",
@@ -689,7 +751,7 @@
             name: "梅田百貨戰區",
             jpName: "梅田（うめだ）",
             type: "shopping",
-            img: "https://images.unsplash.com/photo-1590559899731-a382839e5549?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/d1c7e40f645332c16971e93a181500fcaceae6f4/UMEDA.png",
             intro: "大阪最繁華的都市心臟，自由逛街可造訪 HEP FIVE 或大丸百貨。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=梅田站",
             story: "大阪商業與百貨樞紐，地下街與高樓百貨交織。熱門地點包含 HEP FIVE 紅色摩天輪商場、大丸百貨梅田店（包含 Nintendo Osaka 與 Pokemon Center 專賣店），是採買潮流雜貨與限定商品的熱點。",
@@ -698,11 +760,11 @@
           },
           {
             time: "18:00",
-            name: "晚餐：燒肉すき焼き 純（梅田本店）",
+            name: "晚餐：燒肉すき焼き 純 梅田本店",
             jpName: "焼肉すき焼き 純 梅田本店",
             type: "dining",
-            img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop",
-            intro: "嚴選黑毛和牛壽司與壽喜燒套餐，享用極致油脂香氣與滑順口感。",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/d1c7e40f645332c16971e93a181500fcaceae6f4/YakinikuJun.png",
+            intro: "嚴選黑毛和牛壽喜燒套餐，享用極致油脂香氣與滑順口感。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=焼肉すき焼き+純+梅田本店",
             story: "【¥6,050 套餐】含綜合蔬菜拼盤、豆腐、麩、厚切黑毛和牛沙朗、烏龍麵/白飯與甜點。鑄鐵鍋微加熱後醬汁甜香撲鼻，裹上金黃生蛋液口感滑順如絲綢。",
             tips: "已預約晚餐，請依集合時間準時入場。",
@@ -710,32 +772,33 @@
           },
           {
             time: "20:00",
-            name: "返回 KOGUMA 民宿",
+            name: "返回 KOGUMA 民宿 風/嵐 ",
             jpName: "大阪 KOGUMA 民宿",
             type: "stay",
             intro: "抵達民宿辦理入住，分配房間，準備展開精彩之旅。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=大阪府大阪市西成区潮路2丁目10-12",
-            next: "自由休息 / 周邊玉出超市補給"
+            next: "自由活動時間，可以開始你的探險。"
           }
         ]
       },
       '1017': {
-        title: "10/17 (六) Day 2：丹後秘境與美山茅葺村",
+        title: "10/17 (六) Day 2：山海之間｜天橋立 × 美山茅葺之里",
         items: [
           {
             time: "08:00",
             name: "民宿準時出發",
-            jpName: "KOGUMA 出發",
+            jpName: "民宿 出發",
             type: "transport",
             intro: "今日前往海邊與山區，請著舒適保暖洋蔥式穿搭。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=大阪府大阪市西成区潮路2丁目10-12",
-            next: "前往丹後天橋立"
+            next: "前往天橋立"
           },
           {
             time: "中途",
             name: "休息站：道の駅 京丹波 味夢の里",
             jpName: "味夢の里（あじむのさと）",
             type: "spot",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/ce9f31918af1f45f629a3c2a00a2e4d8ddaef138/ajimnosato.png",
             intro: "京都丹波特產休息站，推薦購買在地小農新鮮蔬果與特色點心。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=味夢の里",
             next: "繼續前往天橋立"
@@ -745,7 +808,7 @@
             name: "天橋立飛龍觀",
             jpName: "天橋立（あまのはしだて）",
             type: "spot",
-            img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/ce9f31918af1f45f629a3c2a00a2e4d8ddaef138/AMANOHASHITATE.png",
             intro: "日本三景之一，彎腰從跨下倒望，連綿松林沙洲如翠綠飛龍躍向碧海天際。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=天橋立飛龍観",
             story: "【跨下窺視奇蹟】踏上天橋立最著名的體驗是「股のぞき」（從跨下倒過來望）。透過此視角，筆直沙洲會化作一條盤據海面上的飛龍！午餐推薦品嚐在地熱門「蟹肉便當」（約 1,500 日幣）。",
@@ -757,7 +820,7 @@
             name: "美山茅葺之里",
             jpName: "美山かやぶきの里",
             type: "spot",
-            img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/ce9f31918af1f45f629a3c2a00a2e4d8ddaef138/Miyama.png",
             intro: "留存古樸茅葺屋舍的山村原鄉，宛如走進寧靜浪漫的世外桃源畫卷。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=美山かやぶきの里",
             story: "與合掌村並列的日本三大茅葺聚落之一。古老茅草屋頂依山而立，與綠意田園交織。在這裡可以放慢腳步散步，品嚐美山新鮮牛乳與吉野本葛甜品。",
@@ -783,7 +846,7 @@
           {
             time: "08:30",
             name: "民宿出發",
-            jpName: "KOGUMA 出發",
+            jpName: "民宿出發",
             type: "transport",
             intro: "出發前往箕面山區尋找勝運達摩。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=大阪府大阪市西成区潮路2丁目10-12",
@@ -794,7 +857,7 @@
             name: "勝尾寺",
             jpName: "勝尾寺（かつおうじ）",
             type: "spot",
-            img: "https://images.unsplash.com/photo-1578637387939-43c525550085?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/ce9f31918af1f45f629a3c2a00a2e4d8ddaef138/DAMO.png",
             intro: "勝運祈願名剎，古木與石階間遍布萬千朱紅達摩像，震撼且充滿生命力。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=勝尾寺",
             story: "歷史超過千年的勝運靈場。最吸引人的是散落於全寺各處角落的勝運達摩小木偶，大家可購買達摩寫下願望、點上右眼，祈求事業、學業與全家平安勝運！",
@@ -806,10 +869,11 @@
             name: "大阪城 JO-TERRACE OSAKA",
             jpName: "大阪城公園 / JO-TERRACE",
             type: "spot",
-            img: "https://images.unsplash.com/photo-1590253230532-a589336154b7?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/ce9f31918af1f45f629a3c2a00a2e4d8ddaef138/Osaka%20Castle.png",
             intro: "綠意環繞的古城休憩街區，於現代與歷史交界處享用午餐與散步。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=JO-TERRACE+OSAKA",
             story: "【大阪城雄偉歷史】大阪城天守閣為戰國風華地標。JO-TERRACE 為城下開放式商場，串連眾多質感咖啡廳與特色餐館，午餐自理選擇豐富。",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/ce9f31918af1f45f629a3c2a00a2e4d8ddaef138/JO-TERRACE%20OSAKA.png",
             tips: "停留 3 小時，可於公園內遠眺天守閣拍照。",
             next: "前往心齋橋商圈"
           },
@@ -818,7 +882,8 @@
             name: "心齋橋、道頓堀漫步",
             jpName: "心斎橋・道頓堀",
             type: "shopping",
-            img: "https://images.unsplash.com/photo-1590559899731-a382839e5549?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/ce9f31918af1f45f629a3c2a00a2e4d8ddaef138/SHINSAIBASHI.png",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/ce9f31918af1f45f629a3c2a00a2e4d8ddaef138/DOTONBORI.png",
             intro: "大阪繁華地標，藥妝百貨大補貨，固力果跑跑人招牌必拍勝地。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=心斎橋筋商店街",
             story: "大阪最經典的購物與美食街區。從心齋橋筋拱廊商店街（松本清、大國藥妝、UNIQLO、GU）延伸至道頓堀運河，霓虹燈倒映，熱鬧無比。",
@@ -856,19 +921,23 @@
             name: "清水寺、二/三年坂",
             jpName: "清水寺（きよみずでら）",
             type: "spot",
-            img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/ce9f31918af1f45f629a3c2a00a2e4d8ddaef138/Kiyomizu-dera%20Temple.png",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/a7f2bc1d69f255b54e82fe351fe932768a60c74e/TWO.png",
             intro: "京都最具代表性古寺，懸空木造舞台俯瞰古都四季景色與歷史階梯。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=清水寺",
             story: "【音羽之瀧 legend】寺內靈泉分三道，傳說分別代表學業、戀愛與健康長壽，據說只能選喝一口，貪心全喝願望會失效！【弁慶鐵杖】境內有重達 90kg 與 14kg 的鐵錫杖，歡迎挑戰舉舉看！",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/a7f2bc1d69f255b54e82fe351fe932768a60c74e/Otowa%20Waterfall.png",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/a7f2bc1d69f255b54e82fe351fe932768a60c74e/Benkei's%20Iron%20Staff%20and%20Clogs.png",
             tips: "石板階梯漫步請踩穩，二三年坂周邊有許多抹茶與和菓子老店。",
             next: "前往宇治"
           },
           {
             time: "13:30",
             name: "宇治抹茶街、平等院",
-            jpName: "宇治平等院（びょうどういん）",
+            jpName: "宇治抹茶街",
             type: "spot",
-            img: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/82241c1c6d920aeb8e78fe21731aa90a09a12d5b/BYODOU.png",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/0b89df08723d26fc047bfe0282ba4c1afebe9724/UJI.png",
             intro: "抹茶發源地與印於十日圓硬幣上的鳳凰堂，品嚐道地宇治抹茶甜品。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=宇治平等院",
             story: "沿著宇治川漫步，散發濃鬱茶香。平等院鳳凰堂展現平安時代建築美學。（彈性備案：若時間充裕且交通順暢，可安排彈性快閃伏見稻荷千本鳥居）。",
@@ -889,11 +958,11 @@
             name: "晚餐：町家居酒屋 矗矗家",
             jpName: "矗々家（ちくちくや）難波店",
             type: "dining",
-            img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/82241c1c6d920aeb8e78fe21731aa90a09a12d5b/Chikuchikuya%20Namba.pngcrop",
             intro: "古色古香京都町家風格個室，於私密榻榻米包廂享用精緻和風料理。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=矗矗家+難波店",
-            story: "【國語字音：矗（ㄔㄨˋ）】踏入溫潤木質町家，擁有舒適包廂。【¥5,000 日幣 SET】含生魚片拼盤、和風小鍋、烤物、揚物、主食與日式甜點。",
-            tips: "【重大提醒】今晚為最後一個市區夜晚，請於晚餐時確認好返程計程車或電車計畫。",
+            story: "【國語小教室：矗（ㄔㄨˋ）】踏入溫潤木質町家，擁有舒適包廂。【¥5,000 SET】含生魚片拼盤、和風小鍋、烤物、揚物、主食與日式甜點。",
+            tips: "【重大提醒】今晚為最後一個市區夜晚，於晚餐時確認好返程計程車或電車計畫。",
             next: "返回民宿整理行李"
           }
         ]
@@ -915,7 +984,7 @@
             name: "木津市場早午餐",
             jpName: "木津卸売市場",
             type: "dining",
-            img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/82241c1c6d920aeb8e78fe21731aa90a09a12d5b/Osaka%20Kizu%20Wholesale%20Market.png",
             intro: "大阪在地人的海鮮廚房，享用極新鮮海鮮丼、刺身與海產。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=木津卸売市場",
             story: "比起觀光市場更接地氣！海鮮海膽丼、海鮮刺身現點現切。（備案：若木津市場未開放，改前往通天閣後安排泉佐野青空市場）。",
@@ -927,7 +996,7 @@
             name: "難波八阪神社",
             jpName: "難波八阪神社",
             type: "spot",
-            img: "https://images.unsplash.com/photo-1578637387939-43c525550085?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/82241c1c6d920aeb8e78fe21731aa90a09a12d5b/Namba%20Yasaka%20Shrine.png",
             intro: "高達12公尺巨大獅子頭巨殿，傳說張開大口能吞食厄運、帶來勝運。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=難波八阪神社",
             story: "【威震八方獅子殿】黑曜眼睛與金牙張口震撼力十足！象徵把邪氣與不順一口吞掉，吸引無數旅客祈求學業與全家運勢勝利。",
@@ -939,7 +1008,7 @@
             name: "通天閣 / 新世界本通",
             jpName: "通天閣（つうてんかく）",
             type: "spot",
-            img: "https://images.unsplash.com/photo-1590253230532-a589336154b7?w=600&auto=format&fit=crop",
+            img: "https://github.com/rabbitring-huang/familytripinOsaka/blob/87912a7e1f1d85c620109554961cbab6997ebfe4/SKY.png",
             intro: "濃郁昭和下町風情，品嚐道地串炸小吃並登上通天閣俯瞰大阪。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=通天閣",
             story: "充滿大阪庶民活力的代表區！必吃美食為現炸酥脆的「八重勝」或「元祖串炸」，摸摸 Billiken 幸運神腳底板祈求好運。",
@@ -968,11 +1037,13 @@
         { jp: "おすすめはありますか？", romaji: "Osusume wa arimasu ka?", zh: "有推薦的餐點嗎？" },
         { jp: "お会計をお願いします。", romaji: "Okaikei o onegaishimasu.", zh: "麻煩買單，謝謝。" },
         { jp: "追加できますか？", romaji: "Tsuika dekimasu ka?", zh: "可以再加點嗎？" },
-        { jp: "お水をもらえますか？", romaji: "Omizu o moraemasu ka?", zh: "能給我一杯水嗎？" }
+        { jp: "お水をもらえますか？", romaji: "Omizu o moraemasu ka?", zh: "能給我一杯冰水嗎？" },
+        { jp: "お湯をもらえますか？", romaji: "Oyu o moraemasu ka?", zh: "能給我一杯熱水嗎？" },
       ],
       shopping: [
         { jp: "試着してもいいですか？", romaji: "Shichaku shite mo ii desu ka?", zh: "可以試穿嗎？" },
         { jp: "これの大きいサイズはありますか？", romaji: "Kore no ōkii saizu wa arimasu ka?", zh: "這個有大一點的尺寸嗎？" },
+        { jp: "これの小さいサイズはありますか？", romaji: "Kore no chiisai saizu wa arimasu ka?", zh: "這個有小一點的尺寸嗎？" },
         { jp: "免税になりますか？", romaji: "Menzei ni narimasu ka?", zh: "可以辦理免稅嗎？" },
         { jp: "カードで払えますか？", romaji: "Kādo de haraemasu ka?", zh: "可以刷卡嗎？" },
         { jp: "袋をつけてください。", romaji: "Fukuro o tsukete kudasai.", zh: "請給我購物袋。" },
