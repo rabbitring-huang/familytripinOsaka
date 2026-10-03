@@ -720,7 +720,55 @@
       day1019: "今日模式：腿軟但超值得！清水寺拍爆記憶體 ✕ 宇治抹茶吃到滿血復活 🍵",
       day1020: "最後一天熱量是什麼能吃嗎？市場海鮮吃到爽 ✕ 難波八阪獅子頭把厄運通通吃掉 🦁",
       after: "2026 家族旅遊完美落幕！記憶體已塞爆，錢包已破產，但回憶無價！期待下次再出發！"
-      };
+    };
+
+    // Dynamic Status Bar Logic
+    function initDynamicStatus() {
+      const statusBox = document.getElementById('dynamic-status-box');
+      const statusTag = document.getElementById('status-date-tag');
+      if (!statusBox) return;
+
+      const now = new Date();
+      // 設定目標旅遊日期 (2026/10/16 ~ 2026/10/20)
+      const tripStart = new Date(2026, 9, 16); // 註：JS 月份 0 代表 1 月，9 代表 10 月
+      const tripEnd = new Date(2026, 9, 20, 23, 59, 59);
+
+      // 更新日期標籤 (如：10月3日)
+      if (statusTag) {
+        statusTag.textContent = `${now.getMonth() + 1}月${now.getDate()}日`;
+      }
+
+      // 計算今日與出發日相差天數 (以凌晨 00:00 為基準計算)
+      const startOfDayNow = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const startOfDayTrip = new Date(2026, 9, 16);
+      const diffTime = startOfDayTrip - startOfDayNow;
+      const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+      if (now < tripStart) {
+        // 出發前：顯示倒數提示與輪播文案
+        const daysLeft = diffDays > 0 ? diffDays : 0;
+        const msgIndex = Math.abs(daysLeft) % STATUS_DATA.before.length;
+        const text = STATUS_DATA.before[msgIndex].replace('{X}', daysLeft);
+        statusBox.innerHTML = `✈️ ${text}`;
+      } else if (now >= tripStart && now <= tripEnd) {
+        // 行程中：動態匹配當天的 day1016 ~ day1020
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const date = String(now.getDate()).padStart(2, '0');
+        const dKey = `day${month}${date}`;
+        const msg = STATUS_DATA[dKey] || STATUS_DATA.day1016;
+        statusBox.innerHTML = `🇯🇵 ${msg}`;
+      } else {
+        // 行程結束後：顯示 after 感言
+        statusBox.innerHTML = `🎉 ${STATUS_DATA.after}`;
+      }
+    }
+
+    // 頁面載入完成後自動執行
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDynamicStatus);
+    } else {
+      initDynamicStatus();
+    }
 
     // Daily Detailed Itineraries
     const ITINERARY_DATA = {
