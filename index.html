@@ -303,9 +303,9 @@
 
         <!-- Accommodation Photos -->
         <div class="grid grid-cols-3 gap-2 mt-3">
-          <img src="KOKUMA.png" alt="KOGUMA外觀" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
-          <img src="KOKUMA-KASE.png" alt="風棟客廳" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
-          <img src="KOKUMA-Arashi.png" alt="嵐棟客廳" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
+          <img src="KOGUMA.png" onerror="this.onerror=null;this.src='KOKUMA.png'" alt="KOGUMA外觀" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
+          <img src="KOGUMA-KASE.png" onerror="this.onerror=null;this.src='KOKUMA-KASE.png'" alt="風棟客廳" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
+          <img src="KOGUMA-Arashi.png" onerror="this.onerror=null;this.src='KOKUMA-Arashi.png'" alt="嵐棟客廳" class="w-full h-20 object-cover rounded-lg border border-brand-border" loading="lazy" />
         </div>
       </div>
 
@@ -701,7 +701,6 @@
   <script>
     // --- DATA STORE ---
 
-    // Dynamic Status Messages Strategy
     const STATUS_DATA = {
       before: [
         "距離大阪吃貨模式啟動還有 {X} 天！",
@@ -722,55 +721,6 @@
       after: "2026 家族旅遊完美落幕！記憶體已塞爆，錢包已破產，但回憶無價！期待下次再出發！"
     };
 
-    // Dynamic Status Bar Logic
-    function initDynamicStatus() {
-      const statusBox = document.getElementById('dynamic-status-box');
-      const statusTag = document.getElementById('status-date-tag');
-      if (!statusBox) return;
-
-      const now = new Date();
-      // 設定目標旅遊日期 (2026/10/16 ~ 2026/10/20)
-      const tripStart = new Date(2026, 9, 16); // 註：JS 月份 0 代表 1 月，9 代表 10 月
-      const tripEnd = new Date(2026, 9, 20, 23, 59, 59);
-
-      // 更新日期標籤 (如：10月3日)
-      if (statusTag) {
-        statusTag.textContent = `${now.getMonth() + 1}月${now.getDate()}日`;
-      }
-
-      // 計算今日與出發日相差天數 (以凌晨 00:00 為基準計算)
-      const startOfDayNow = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      const startOfDayTrip = new Date(2026, 9, 16);
-      const diffTime = startOfDayTrip - startOfDayNow;
-      const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
-
-      if (now < tripStart) {
-        // 出發前：顯示倒數提示與輪播文案
-        const daysLeft = diffDays > 0 ? diffDays : 0;
-        const msgIndex = Math.abs(daysLeft) % STATUS_DATA.before.length;
-        const text = STATUS_DATA.before[msgIndex].replace('{X}', daysLeft);
-        statusBox.innerHTML = `✈️ ${text}`;
-      } else if (now >= tripStart && now <= tripEnd) {
-        // 行程中：動態匹配當天的 day1016 ~ day1020
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const date = String(now.getDate()).padStart(2, '0');
-        const dKey = `day${month}${date}`;
-        const msg = STATUS_DATA[dKey] || STATUS_DATA.day1016;
-        statusBox.innerHTML = `🇯🇵 ${msg}`;
-      } else {
-        // 行程結束後：顯示 after 感言
-        statusBox.innerHTML = `🎉 ${STATUS_DATA.after}`;
-      }
-    }
-
-    // 頁面載入完成後自動執行
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initDynamicStatus);
-    } else {
-      initDynamicStatus();
-    }
-
-    // Daily Detailed Itineraries
     const ITINERARY_DATA = {
       '1016': {
         title: "10/16 (五) Day 1：關西抵達與梅田百貨戰區",
@@ -929,9 +879,9 @@
             jpName: "大阪城公園 / JO-TERRACE",
             type: "spot",
             imgs: [
-                   "Osaka Castle.png",
-                   "JO-TERRACE OSAKA.png"
-                   ],
+              "Osaka Castle.png",
+              "JO-TERRACE OSAKA.png"
+            ],
             intro: "綠意環繞的古城休憩街區，於現代與歷史交界處享用午餐與散步。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=JO-TERRACE+OSAKA",
             story: "【大阪城雄偉歷史】大阪城天守閣為戰國風華地標。JO-TERRACE 為城下開放式商場，串連眾多質感咖啡廳與特色餐館，午餐自理選擇豐富。",
@@ -944,9 +894,9 @@
             jpName: "心斎橋・道頓堀",
             type: "shopping",
             imgs: [
-                   "SHINSAIBASHI.png",
-                   "DOTONBORI.png"
-                   ],
+              "SHINSAIBASHI.png",
+              "DOTONBORI.png"
+            ],
             intro: "大阪繁華地標，藥妝百貨大補貨，固力果跑跑人招牌必拍勝地。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=心斎橋筋商店街",
             story: "大阪最經典的購物與美食街區。從心齋橋筋拱廊商店街（松本清、大國藥妝、UNIQLO、GU）延伸至道頓堀運河，霓虹燈倒映，熱鬧無比。",
@@ -985,11 +935,11 @@
             jpName: "清水寺（きよみずでら）",
             type: "spot",
             imgs: [
-                   "Kiyomizu-dera Temple.png",
-                   "TWO.png",
-                   "Otowa Waterfall.png",
-                   "Benkei's Iron Staff and Clogs.png"
-                   ],
+              "Kiyomizu-dera Temple.png",
+              "TWO.png",
+              "Otowa Waterfall.png",
+              "Benkei's Iron Staff and Clogs.png"
+            ],
             intro: "京都最具代表性古寺，懸空木造舞台俯瞰古都四季景色與歷史階梯。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=清水寺",
             story: "【音羽之瀧 legend】寺內靈泉分三道，傳說分別代表學業、戀愛與健康長壽，據說只能選喝一口，貪心全喝願望會失效！【弁慶鐵杖】境內有重達 90kg 與 14kg 的鐵錫杖，歡迎挑戰舉舉看！",
@@ -1002,9 +952,9 @@
             jpName: "宇治抹茶街",
             type: "spot",
             imgs: [
-                   "BYODOU.png",
-                   "UJI.png"
-                   ],
+              "BYODOU.png",
+              "UJI.png"
+            ],
             intro: "抹茶發源地與印於十日圓硬幣上的鳳凰堂，品嚐道地宇治抹茶甜品。",
             mapUrl: "https://www.google.com/maps/search/?api=1&query=宇治平等院",
             story: "沿著宇治川漫步，散發濃鬱茶香。平等院鳳凰堂展現平安時代建築美學。（彈性備案：若時間充裕且交通順暢，可安排彈性快閃伏見稻荷千本鳥居）。",
@@ -1095,8 +1045,6 @@
       }
     };
 
-    // Japanese Practical Phrases Data
-    // Fixed 5 Categories ONLY: 🍴 點餐 | 🛍 購物 | 🚕 計程車 | 💬 對話 | 🚨 緊急
     const JP_PHRASES = {
       dining: [
         { jp: "すみません、注文してもいいですか？", romaji: "Sumimasen, chūmon shite mo ii desu ka?", zh: "不好意思，可以點餐嗎？" },
@@ -1105,7 +1053,7 @@
         { jp: "お会計をお願いします。", romaji: "Okaikei o onegaishimasu.", zh: "麻煩買單，謝謝。" },
         { jp: "追加できますか？", romaji: "Tsuika dekimasu ka?", zh: "可以再加點嗎？" },
         { jp: "お水をもらえますか？", romaji: "Omizu o moraemasu ka?", zh: "能給我一杯冰水嗎？" },
-        { jp: "お湯をもらえますか？", romaji: "Oyu o moraemasu ka?", zh: "能給我一杯熱水嗎？" },
+        { jp: "お湯をもらえますか？", romaji: "Oyu o moraemasu ka?", zh: "能給我一杯熱水嗎？" }
       ],
       shopping: [
         { jp: "試着してもいいですか？", romaji: "Shichaku shite mo ii desu ka?", zh: "可以試穿嗎？" },
@@ -1138,7 +1086,6 @@
       ]
     };
 
-    // State Variables
     let currentTab = 'home';
     let activeDay = '1016';
     let activeJpCategory = 'dining';
@@ -1152,68 +1099,59 @@
       switchTab('home');
     });
 
-    // Determine target default date according to prompt rules
     function determineDefaultDay() {
       const now = new Date();
       const year = now.getFullYear();
-      const month = now.getMonth() + 1; // 0-indexed
+      const month = now.getMonth() + 1;
       const date = now.getDate();
 
-      // Check if within 2026 trip period
       if (year === 2026 && month === 10) {
         if (date >= 16 && date <= 20) {
           activeDay = `10${date}`;
           return;
         }
       }
-      // Before trip -> Default to 10/16
-      // After trip -> Default to 10/16 or last, keeping backview available
       activeDay = '1016';
     }
 
-    // Dynamic Status Bar Logic
     function initDynamicStatus() {
       const now = new Date();
       const statusBox = document.getElementById('dynamic-status-box');
       const statusTag = document.getElementById('status-date-tag');
 
-      // Date calculations relative to Oct 16, 2026
-      const tripStart = new Date(2026, 9, 16); // Oct 16, 2026
-      const tripEnd = new Date(2026, 9, 20);   // Oct 20, 2026
+      const tripStart = new Date(2026, 9, 16);
+      const tripEnd = new Date(2026, 9, 20);
 
       const diffTime = tripStart - now;
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-      statusTag.textContent = `${now.getMonth() + 1}月${now.getDate()}日`;
+      if (statusTag) {
+        statusTag.textContent = `${now.getMonth() + 1}月${now.getDate()}日`;
+      }
+
+      if (!statusBox) return;
 
       if (now < tripStart) {
-        // Before departure
         const daysLeft = diffDays > 0 ? diffDays : 1;
         const msgIndex = Math.abs(daysLeft) % STATUS_DATA.before.length;
         statusBox.innerHTML = `✈️ ${STATUS_DATA.before[msgIndex].replace('{X}', daysLeft)}`;
       } else if (now >= tripStart && now <= tripEnd) {
-        // During trip
         const dKey = `day10${now.getDate()}`;
         const msg = STATUS_DATA[dKey] || STATUS_DATA.day1016;
         statusBox.innerHTML = `🇯🇵 ${msg}`;
       } else {
-        // Post trip
         statusBox.innerHTML = `🎉 ${STATUS_DATA.after}`;
       }
     }
 
-    // Tab Switching Logic
     function switchTab(tabId) {
       currentTab = tabId;
 
-      // Hide all pages
       document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
 
-      // Show selected page
       const targetPage = document.getElementById(`page-${tabId}`);
       if (targetPage) targetPage.classList.remove('hidden');
 
-      // Update Nav buttons state
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('text-brand-primary', 'font-bold');
         btn.classList.add('text-brand-muted');
@@ -1228,19 +1166,17 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Go to today's itinerary from Home button
     function goToTodayItinerary() {
       switchTab('itinerary');
       renderDay(activeDay);
     }
 
-    // Switch Itinerary Date from Home Grid
     function switchItineraryDate(dayKey) {
       switchTab('itinerary');
       renderDay(dayKey);
     }
 
-    // Render Itinerary Page by Date Key
+    // ★ 已修復：同時支援單張 img 與多張 imgs 陣列的圖片渲染邏輯
     function renderDay(dayKey) {
       activeDay = dayKey;
       const container = document.getElementById('itinerary-content');
@@ -1248,7 +1184,6 @@
 
       if (!data) return;
 
-      // Update Date Buttons Style
       ['1016', '1017', '1018', '1019', '1020'].forEach(k => {
         const btn = document.getElementById(`btn-${k}`);
         if (btn) {
@@ -1260,7 +1195,6 @@
         }
       });
 
-      // Build Day HTML
       let html = `
         <div class="bg-brand-card p-3 rounded-xl border border-brand-border/80 shadow-sm flex items-center justify-between">
           <h2 class="font-serif font-bold text-sm text-brand-text">${data.title}</h2>
@@ -1268,12 +1202,37 @@
         </div>
       `;
 
-      data.items.forEach((item, index) => {
+      data.items.forEach((item) => {
         const typeBadge = getTypeBadge(item.type);
+
+        // 整理圖片清單（支援單張 img 或多張 imgs 陣列）
+        let imageList = [];
+        if (item.imgs && Array.isArray(item.imgs)) {
+          imageList = item.imgs;
+        } else if (item.img) {
+          imageList = [item.img];
+        }
+
+        let imageHTML = '';
+        if (imageList.length === 1) {
+          imageHTML = `
+            <div class="overflow-hidden rounded-lg border border-brand-border/60">
+              <img src="${imageList[0]}" alt="${item.name}" class="w-full h-40 object-cover hover:scale-105 transition duration-300" loading="lazy" onerror="this.style.display='none'" />
+            </div>
+          `;
+        } else if (imageList.length > 1) {
+          const gridCols = imageList.length === 2 ? 'grid-cols-2' : 'grid-cols-2';
+          imageHTML = `
+            <div class="grid ${gridCols} gap-1.5 overflow-hidden rounded-lg border border-brand-border/60">
+              ${imageList.map(imgSrc => `
+                <img src="${imgSrc}" alt="${item.name}" class="w-full h-28 object-cover hover:scale-105 transition duration-300" loading="lazy" onerror="this.style.display='none'" />
+              `).join('')}
+            </div>
+          `;
+        }
 
         html += `
           <div class="bg-brand-card border border-brand-border rounded-xl p-4 shadow-sm relative space-y-2.5">
-            <!-- Header row: Time & Title with Direct Map Link -->
             <div class="flex items-start justify-between gap-2">
               <div class="flex items-center gap-2">
                 <span class="text-xs font-bold bg-brand-badge text-brand-primary px-2 py-1 rounded-md shrink-0">
@@ -1290,19 +1249,12 @@
               ${typeBadge}
             </div>
 
-            <!-- Attraction Photo (if present) -->
-            ${item.img ? `
-              <div class="overflow-hidden rounded-lg border border-brand-border/60">
-                <img src="${item.img}" alt="${item.name}" class="w-full h-40 object-cover hover:scale-105 transition duration-300" loading="lazy" />
-              </div>
-            ` : ''}
+            ${imageHTML}
 
-            <!-- Main Intro (Max 2 lines rule) -->
             <p class="text-xs text-brand-text/90 leading-relaxed font-normal">
               ${item.intro}
             </p>
 
-            <!-- Accordion Details (if story or tips present) -->
             ${(item.story || item.tips) ? `
               <div class="border-t border-brand-border/60 pt-2 mt-1">
                 <button onclick="toggleAccordion(this)" class="w-full text-left text-xs font-bold text-brand-primary flex justify-between items-center py-1">
@@ -1312,13 +1264,12 @@
                 <div class="accordion-content">
                   <div class="pt-2 space-y-2 text-[11px] text-brand-muted leading-relaxed bg-brand-bg/60 p-2.5 rounded-lg border border-brand-border/40 mt-1">
                     ${item.story ? `<div><strong class="text-brand-text">💡 故事解密：</strong>${item.story}</div>` : ''}
-                    ${item.tips ? `<div class="text-brand-secondary"><strong class="text-brand-text">⚠️️ 參觀提醒：</strong>${item.tips}</div>` : ''}
+                    ${item.tips ? `<div class="text-brand-secondary"><strong class="text-brand-text">⚠ 參觀提醒：</strong>${item.tips}</div>` : ''}
                   </div>
                 </div>
               </div>
             ` : ''}
 
-            <!-- Next Station Footer -->
             ${item.next ? `
               <div class="text-[11px] text-brand-muted bg-brand-bg/40 p-2 rounded-lg flex items-center gap-1.5">
                 <span class="text-brand-primary">➡️ 下一站：</span>
@@ -1333,7 +1284,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Helper for Type Badges
     function getTypeBadge(type) {
       switch(type) {
         case 'dining':
@@ -1351,13 +1301,11 @@
       }
     }
 
-    // Accordion Toggle Helper
     function toggleAccordion(btn) {
       const parent = btn.parentElement;
       parent.classList.toggle('accordion-open');
     }
 
-    // Switch Japanese Category Tab
     function switchJpCategory(catKey) {
       activeJpCategory = catKey;
 
@@ -1375,7 +1323,6 @@
       renderJapanesePhrases(catKey);
     }
 
-    // Render Japanese Phrases List
     function renderJapanesePhrases(catKey) {
       const container = document.getElementById('jp-phrases-container');
       const list = JP_PHRASES[catKey] || [];
@@ -1398,4 +1345,3 @@
   </script>
 </body>
 </html>
-```eod
